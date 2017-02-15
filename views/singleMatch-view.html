@@ -1,0 +1,30 @@
+<br><br><br>
+
+<div class="row">
+    <div class="col-lg-9 col-md-10 col-sm-12 col-xs-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="#/fixture">Fixture &amp; Results</a></li>
+            <li class="breadcrumb-item active"><b>{{match.team1.code}} vs {{match.team2.code}}, {{match.date}}</b></li>
+        </ol>
+    </div>
+</div>
+
+<br><br>
+
+<div class="row">
+    <div class="col-lg-9 col-md-10 col-sm-12 col-xs-12">
+        <div id="round-wrapper">
+        <h4><b>{{round}}</b></h4>
+        </div>
+        <br>
+        <div class="well well-sm">
+            <h4><b> {{match.team1.name}} &emsp; {{match.score1}} &emsp;&emsp; vs &emsp;&emsp; {{match.score2}} &emsp;{{match.team2.name}} </b></h4>
+        </div>
+        <hr>
+        <div class="well well-sm well-custom">
+            <h4><b>&emsp;Total goals scored : {{match.score1 + match.score2}}</b></h4>
+            <h4 ng-hide="drawn"><b>&emsp;Match won by</b></h4> <h4><b>&emsp;{{winner}}</b></h4>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<div id="top" class="row">
+    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group">
+            <label>Team name:</label>
+            <input type="text" class="form-control" placeholder="search ..." ng-model="searchName">
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group">
+            <label>Score:</label>
+            <input type="number" min="0" max="15" class="form-control" ng-model="searchScore">
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group">
+            <label>Season/Year:</label>
+            <select class="form-control" ng-model="season" ng-change="getAllMatches()">
+                <option value="season15">2015-16</option>
+                <option value="season16">2016-17</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group">
+            <label>Till matchday:</label>
+            <select class="form-control" ng-model="matchday" ng-change="getDayMatches()">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-9 col-md-10 col-sm-12 col-xs-12">
+    <div id="schedule" ng-repeat="round in allMatches.rounds">
+        <h5 id="round-name"><b>{{round.name}}</b></h5>
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Team1</th>
+                        <th>Team2</th>
+                        <th>Date</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="match in round.matches | bothTeamNames : searchName | bothTeamScores : searchScore">
+                        <td>{{match.team1.name}}</td>
+                        <td>{{match.team2.name}}</td>
+                        <td>{{match.date | date}}</td>
+                        <td>{{match.score1}}-{{match.score2}}</td>
+                        <td><a class="btn btn-xs" href="#/singlematch/{{round.name}}/{{match}}">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-1 col-lg-offset-10 col-md-1 col-md-offset-10 col-sm-1 col-sm-offset-10 col-xs-1 col-xs-offset-10">
+        <span>
+            <a ng-click="scrollTo('top')"><i class="fa fa-3x fa-arrow-circle-up"></i></a>
+        </span>
+    </div>
+</div>

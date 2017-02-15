@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+        <div class="form-group">
+            <label>Season/Year:</label>
+            <select class="form-control" ng-model="season" ng-change="getTeamDetails()">
+                <option value="season15">2015-16</option>
+                <option value="season16">2016-17</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <div>
+        <h4 id="Pt-heading"><b>EPL Points Table</b></h4><br>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr id="table-header">
+                        <th>Position</th>
+                        <th>Club</th>
+                        <th>Played</th>
+                        <th ng-click="sortInfo('goals')">Goals
+                            <div ng-class="getSortArrow('goals')"></div>
+                        </th>
+                        <th ng-click="sortInfo('won')">Won
+                            <div ng-class="getSortArrow('won')"></div>
+                        </th>
+                        <th>Lost</th>
+                        <th>Drawn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="teamDetail in teamDetails | orderBy : sortColumn : reverseSort">
+                        <td>{{$index+1}}</td>
+                        <td>{{teamDetail.name}}</td>
+                        <td>{{teamDetail.played}}</td>
+                        <td>{{teamDetail.goals}}</td>
+                        <td>{{teamDetail.won}}</td>
+                        <td>{{teamDetail.lost}}</td>
+                        <td>{{teamDetail.drawn}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
