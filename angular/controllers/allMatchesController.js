@@ -2,6 +2,8 @@
 
 myApp.controller('allMatchesController',['$http', '$location', '$anchorScroll', '$scope', function($http, $location, $anchorScroll, $scope){
 
+    $scope.season = "season15";
+
     $scope.getAllMatches = function(){
 
     var baseUrl;
@@ -10,9 +12,12 @@ myApp.controller('allMatchesController',['$http', '$location', '$anchorScroll', 
     baseUrl = 'https://raw.githubusercontent.com/openfootball/football.json/master/2016-17/en.1.json';
     $scope.matchday = 0;
     }
-    else{
+    else if($scope.season == "season15"){
     baseUrl = 'https://raw.githubusercontent.com/openfootball/football.json/master/2015-16/en.1.json';
     $scope.matchday = 0;
+        if ($scope.searchName == "Burnley" || $scope.searchName == "Hull City" || $scope.searchName == "Middlesbrough"){
+            alert("Select 2016-17 as season");
+        }
     }
 
     $scope.allMatches = {};
